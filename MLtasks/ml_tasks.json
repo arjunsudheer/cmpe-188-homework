@@ -189,6 +189,24 @@
         },
         {
             "series": "Logistic Regression",
+            "level": 3,
+            "id": "logreg_lvl3_imbalanced_metrics_focal_loss",
+            "algorithm": "Logistic Regression (Multiclass Imbalanced + Focal Loss)",
+            "description": "Multiclass (5 classes) imbalanced classification on KDD Cup 99 network intrusion detection dataset comparing Weighted CrossEntropyLoss vs Focal Loss for handling severe class imbalance.",
+            "interface_protocol": "pytorch_task_v1",
+            "requirements": {
+                "data": "KDD Cup 99 Network Intrusion Detection: Top 5 most common attack classes with severe real-world class imbalance (normal traffic dominant). Categorical features encoded via hashing; standardized features.",
+                "implementation": "Train two models: (1) Weighted CrossEntropyLoss, (2) Focal Loss (gamma=2.0). Both with early stopping on weighted F1.",
+                "loss_functions": "Implement FocalLoss as: FL(p_t) = -(1-p_t)^gamma * log(p_t) with alpha weighting for class imbalance.",
+                "metrics": "For each loss function, compute accuracy, precision/recall/F1 (macro and weighted), MSE, and R2 score on validation split.",
+                "comparison": "Compare both loss functions; save separate metrics JSON files for each loss. Mention which loss performs better in metrics files and print statements.",
+                "visualization": "Plot training loss and validation F1 for both loss functions side-by-side.",
+                "evaluation": "evaluate() must return: accuracy, precision_macro, recall_macro, f1_macro, precision_weighted, recall_weighted, weighted_f1, mse, r2.",
+                "validation": "Both models must achieve accuracy > 0.50, weighted_f1 > 0.30, and MSE < 0.50 on validation split."
+            }
+        },
+        {
+            "series": "Logistic Regression",
             "level": 4,
             "id": "logreg_lvl4_calibration_thresholding",
             "algorithm": "Logistic Regression (Calibration & Thresholding)",
