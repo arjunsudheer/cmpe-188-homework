@@ -730,6 +730,24 @@
         },
         {
             "series": "Convolutional Neural Networks",
+            "level": 2,
+            "id": "cnn_lvl2_digits",
+            "algorithm": "CNN on sklearn Digits (Optimizer Comparison)",
+            "description": "Small CNN on sklearn 8x8 digits; compare Adam, SGD+Nesterov, and AdamW with the same epoch budget and ReduceLROnPlateau; pick best by validation accuracy.",
+            "interface_protocol": "pytorch_task_v1",
+            "going_beyond": "Uses sklearn.datasets.load_digits (see https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html) with stratified train/val/test split and pixel scaling to [0,1]. Contrasts three optimizers (Adam vs SGD+momentum+Nesterov vs AdamW with stronger decoupled weight decay) rather than only swapping data. evaluate() reports classification loss and accuracy plus MSE and R2 between one-hot labels and softmax probabilities for pytorch_task_v1 alignment.",
+            "requirements": {
+                "data": "sklearn.datasets.load_digits; stratified 70/15/15 train/val/test; features reshaped to Nx1x8x8 and divided by 16.0.",
+                "architecture": "Compact CNN: two conv+ReLU+maxpool blocks, dropout on the fully connected head, 10-way logits.",
+                "implementation": "For each optimizer, fresh model with seed 42, identical epochs and ReduceLROnPlateau on validation loss; keep weights from the run with highest final validation accuracy. Required protocol functions: get_task_metadata, set_seed, get_device, make_dataloaders, build_model, train, evaluate, predict, save_artifacts.",
+                "evaluation": "evaluate() returns loss, accuracy, mse, r2 on the given loader; main() prints train/val/test metrics for the selected best model.",
+                "visualization": "Confusion matrix on validation for the best model; optimizer_comparison_val_acc.png overlaying validation accuracy curves.",
+                "output": "metrics.json includes optimizer_comparison (per-optimizer val accuracy, MSE, R2, hyperparameters), best_optimizer, optimizer_val_accuracies histories, and best-model train/val/test metrics; model.pth state dict.",
+                "validation": "main() asserts val accuracy >= 0.92, every optimizer run reaches val accuracy >= 0.75, and the saved best model is at least as good as the standalone Adam run on validation."
+            }
+        },
+        {
+            "series": "Convolutional Neural Networks",
             "level": 3,
             "id": "cnn_lvl3_resnet_transfer",
             "algorithm": "Transfer Learning (ResNet)",
