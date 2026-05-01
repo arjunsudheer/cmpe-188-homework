@@ -1009,6 +1009,21 @@
             "requirements": {
                 "validation": "AUC/AP reported with deterministic sampling."
             }
+        },
+        {
+            "series": "Natural Language Processing",
+            "level": 4,
+            "id": "llm_reasoning_classification",
+            "algorithm": "Text Classification Pipelines Comparison",
+            "description": "Evaluate and compare three text classification pipelines (Word2Vec+KNN, Word2Vec+NaiveBayes, TF-IDF+SVM) on LLM reasoning prompt classification.",
+            "interface_protocol": "pytorch_task_v1",
+            "requirements": {
+                "data": "Nvidia Nemotron Model Reasoning Challenge dataset (train_with_task_type.csv). Target variable: task_type.",
+                "implementation": "Word2Vec embeddings and TF-IDF features; Scikit-learn algorithms (KNN, GaussianNB, LinearSVC).",
+                "evaluation": "Record accuracy, F1-score, precision, recall, training time, and inference time for three pipelines.",
+                "visualization": "Generate a comparison bar chart illustrating trade-offs between predictive performance and computational speed.",
+                "validation": "Evaluate on a validation split, compute all metrics, and save visualization/results to artifacts."
+            }
         }
     ]
 }

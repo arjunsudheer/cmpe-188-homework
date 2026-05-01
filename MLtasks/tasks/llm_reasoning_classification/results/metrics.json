@@ -1,0 +1,53 @@
+{
+    "Word2Vec_KNN": {
+        "train_time_seconds": 2.880924940109253,
+        "train_metrics": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1_score": 1.0,
+            "inference_time_seconds": 0.41855740547180176
+        },
+        "test_metrics": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1_score": 1.0,
+            "inference_time_seconds": 0.08756828308105469
+        }
+    },
+    "Word2Vec_NaiveBayes": {
+        "train_time_seconds": 2.8251991271972656,
+        "train_metrics": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1_score": 1.0,
+            "inference_time_seconds": 0.2906458377838135
+        },
+        "test_metrics": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1_score": 1.0,
+            "inference_time_seconds": 0.07035398483276367
+        }
+    },
+    "TFIDF_SVM": {
+        "train_time_seconds": 0.17092585563659668,
+        "train_metrics": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1_score": 1.0,
+            "inference_time_seconds": 0.10622525215148926
+        },
+        "test_metrics": {
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1_score": 1.0,
+            "inference_time_seconds": 0.026845932006835938
+        }
+    }
+}
